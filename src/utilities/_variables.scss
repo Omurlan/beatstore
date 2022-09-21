@@ -1,0 +1,22 @@
+// Container width
+$maxWidth: 1300px;
+$mdWidth: 1200px;
+
+:root[data-theme="light"] {
+  --text: #161616;
+  --black: #161616;
+  --white: #fdfdfd;
+  --red: #f46e70;
+}
+
+:root[data-theme="dark"] {
+  --text: #fdfdfd;
+  --white: #161616;
+  --black: #fdfdfd;
+  --red: #f46e70;
+}
+
+:root {
+  --gray: #9d9d9d;
+  --dark-light: #1a1a1a;
+}

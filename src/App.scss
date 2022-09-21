@@ -1,20 +1,25 @@
-// Colors
-$red: #f46e70;
-$black: #161616;
-$white: #fdfdfd;
+@import "utilities/_variables";
 
 html {
   font-size: 10px;
 }
 
 body {
+  background-color: var(--white);
   font-family: "Oswald", sans-serif;
   margin: 0;
+  transition: all 0.2s ease-in-out;
+  overflow-x: hidden;
+}
+
+* {
+  box-sizing: border-box;
 }
 
 ul {
   list-style: none;
   padding: 0;
+  margin: 0;
 }
 
 h1,
@@ -45,4 +50,34 @@ h5 {
 }
 h6 {
   font-size: 1.9rem;
+}
+
+a {
+  text-decoration: none;
+}
+
+p,
+a,
+ul {
+  font-size: 1.7rem;
+  margin: 0;
+}
+
+p,
+a,
+ul,
+div {
+  color: var(--text);
+  //transition: all 0.3s;
+}
+
+.container {
+  margin: 0 auto;
+  max-width: $maxWidth;
+  @media screen and (max-width: 1400px) {
+    padding: 0 40px;
+  }
+  @media screen and (max-width: 700px) {
+    padding: 0 20px;
+  }
 }

@@ -1,0 +1,256 @@
+.navbar {
+  background-color: var(--dark-light);
+}
+
+$navbarHeight: 60px;
+
+.burgerWrapper {
+  position: relative;
+  display: none;
+  cursor: pointer;
+  width: 23px;
+  height: $navbarHeight;
+  z-index: 11;
+}
+
+.burger {
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: white;
+  transition: all 0.3s ease-in-out;
+  border-radius: 4px;
+
+  &:before,
+  &:after {
+    border-radius: 4px;
+    transition: all 0.3s ease-in-out;
+  }
+
+  &:before,
+  &:after {
+    position: absolute;
+    content: "";
+
+    width: 100%;
+    height: 2px;
+    background: white;
+  }
+
+  &:before {
+    top: 8px;
+  }
+
+  &:after {
+    top: -8px;
+  }
+}
+
+.logoWrapper {
+  position: absolute;
+  bottom: 0px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(128, 128, 128, 0.18);
+  padding: 10px 20px;
+  width: 100%;
+  left: 0;
+
+  .logo {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 1px solid white;
+  }
+
+  p {
+    color: white;
+  }
+}
+
+.navbarContent {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: $navbarHeight;
+}
+
+.navbarList {
+  display: flex;
+  gap: 40px;
+  height: 100%;
+
+  li {
+    display: flex;
+
+    a {
+      position: relative;
+      display: flex;
+      align-items: center;
+      color: var(--gray);
+
+      &:hover {
+        color: white;
+      }
+    }
+
+    &:hover a:before {
+      position: absolute;
+      content: "";
+      bottom: 0;
+      width: 100%;
+      height: 1px;
+      background: white;
+    }
+
+    &:hover ul {
+      display: flex;
+    }
+
+    ul {
+      $paddingLeft: 5px;
+      display: none;
+      position: absolute;
+      padding: 25px 0;
+      gap: 40px;
+      background: black;
+      top: $navbarHeight;
+      left: -$paddingLeft;
+      width: 100vw;
+
+      &:before {
+        position: absolute;
+        content: "";
+        background: black;
+        height: 100%;
+        width: 100vw;
+        top: 0;
+        left: -100%;
+        z-index: -1;
+      }
+
+      div {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+
+        h5 {
+          font-weight: 400;
+          text-transform: uppercase;
+          padding-left: $paddingLeft;
+          color: var(--gray);
+          font-size: 1.6rem;
+        }
+
+        li {
+          height: auto;
+          font-size: 1.6rem;
+          color: white;
+          cursor: pointer;
+          padding-left: $paddingLeft;
+
+          &:hover {
+            background: rgba(128, 128, 128, 0.19);
+          }
+        }
+      }
+    }
+  }
+}
+
+.socials {
+  display: flex;
+  gap: 15px;
+  border-top: 1px solid #343434;
+  padding-top: 20px;
+  a {
+    background: white;
+    border-radius: 50%;
+    width: 35px !important;
+    height: 35px !important;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .burgerWrapper {
+    display: block;
+    cursor: pointer;
+  }
+
+  .navbarContent {
+    position: static;
+
+    .navbarList {
+      position: absolute;
+      flex-direction: column;
+      gap: 0;
+      top: 0;
+      padding: 59px 20px 0 20px;
+      width: 260px;
+      border-top: 1px solid red;
+      background: var(--dark-light);
+      //background: linear-gradient(
+      //  90deg,
+      //  rgba(52, 52, 52, 1) 0%,
+      //  rgba(26, 26, 26, 1) 100%
+      //);
+
+      left: -260px;
+      height: 100vh;
+      z-index: 10;
+      transition: 0.3s ease-in-out;
+
+      li {
+        display: flex;
+        align-items: center;
+        border-top: 1px solid #343434;
+        padding: 10px 0;
+
+        &:first-child {
+          border: none;
+        }
+
+        &:hover ul {
+          display: none;
+        }
+
+        a {
+          color: white;
+
+          &:before {
+            display: none;
+          }
+        }
+      }
+    }
+
+    .navbarList.active {
+      display: flex;
+      left: 0;
+      transition: 0.3s ease-in-out;
+    }
+
+    .burger.active {
+      background: transparent;
+      z-index: 10;
+
+      &:before,
+      &:after {
+        transition: all 0.3s ease-in-out;
+      }
+
+      &:before {
+        transform: rotate(45deg);
+        top: 0;
+      }
+      &:after {
+        transform: rotate(-45deg);
+        top: 0;
+      }
+    }
+  }
+}

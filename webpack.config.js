@@ -49,7 +49,11 @@ module.exports = {
   devtool: "inline-source-map",
   plugins: plugins(),
   resolve: {
-    extensions: [".js", ".jsx", ".ts", ".tsx"],
+    alias: {
+      variables: path.resolve(__dirname, "src/utilities/_variables.scss"),
+      assets: path.resolve(__dirname, "src/assets/"),
+    },
+    extensions: [".js", ".ts", ".tsx"],
   },
   module: {
     rules: [
@@ -64,7 +68,7 @@ module.exports = {
         use: ["ts-loader"],
       },
       {
-        test: /\.(png|jp[e]g|svg|gif)$/,
+        test: /\.(png|jpg|svg|gif)$/i,
         type: "asset/resource",
       },
       {
